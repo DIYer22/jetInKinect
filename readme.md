@@ -10,11 +10,11 @@
 
 ## Demo
 
-![](img/demo.gif)
+[![](img/demo.gif)](https://v.qq.com/x/page/w0528gnfxhx.html)
 
 [Video Demo on YouTube](https://youtu.be/FVttYUcRh7w)
 
-[Video Demo on 腾讯视频]()
+[Video Demo on 腾讯视频](https://v.qq.com/x/page/w0528gnfxhx.html)
 
 ## 操作说明
 
@@ -24,7 +24,7 @@ kinect 各节点名称
 
 ![](img/joint.png)
 
-此外 还有以下向量
+节点与节点间生成以下向量
 > * spineVector：脊柱所在向量
 > * shoulderVector：两个肩膀节点所在向量
 > * elbowVector：两个肘关节所在向量
@@ -34,28 +34,28 @@ kinect 各节点名称
 > * bodyz：由spineVector和shoulderVector叉积求得的身体平面的法向量
 
 
-0. 默认状态
+1. 默认状态
 > ![](img/NULL.png)
 > * `动作`：人面向Kinect 竖直战立，手臂的上臂与身体在同一平面， 手臂的前臂正对着Kinect
 > * `原理`：无
 >* `映射按键`：无
 >* `功能`：默认状态 啥也不做
 
-0. 垂直起飞
+2. 垂直起飞
 > ![](img/w.png)
 > * `动作`：保持上臂与身体在同一平面， 前臂正对着Kinect，将上臂抬起，使之尽量与肩膀齐平
 > * `原理`：计算shoulderElhowLeft 和 shoulderElhowRight的夹角 大于100°则垂直起
 >* `映射按键`：`W`
 >* `功能`：缓慢垂直向上升空
 
-0. 垂直下降
+3. 垂直下降
 > ![](img/s.png)
 > * `动作`：上半身与默认状态保持一致，脚呈半蹲姿势
 > * `原理`：hipKneeLeft与向量(0,0,-1)的夹角若小于80°则激发
 >* `映射按键`：`S`
 >* `功能`：缓慢垂直降落
 
-0. 左倾斜/右倾斜
+4. 左倾斜/右倾斜
 > ![](img/a.png)
 > ![](img/d.png)
 > * `动作`：保持左右手肘有较大高度落差
@@ -63,7 +63,7 @@ kinect 各节点名称
 >* `映射按键`：`A/D`
 >* `功能`：飞机左倾斜/右倾斜
 
-0. 前倾斜/后倾斜
+5. 前倾斜/后倾斜
 > ![](img/up.png)
 > ![](img/down.png)
 > * `动作`：保持前臂与水平面有较大角度
@@ -71,7 +71,7 @@ kinect 各节点名称
 >* `映射按键`：`up array/down array`
 >* `功能`：飞机前倾斜/后倾斜
 
-0. 左旋转/右旋转
+6. 左旋转/右旋转
 > ![](img/q.png)
 > ![](img/e.png)
 > * `动作`：上半身左/右旋转一定角度
@@ -79,7 +79,7 @@ kinect 各节点名称
 >* `映射按键`：`Q/E`
 >* `功能`：飞机的方向在水平左旋转/右旋转
 
-0. 加速/减速
+7. 加速/减速
 > ![](img/n8.png)
 > ![](img/n2.png)
 > * `动作`：前臂水平张开45°/前臂水平聚拢45°
@@ -217,5 +217,4 @@ def degreeOfVictor(p1,p2):
 0. [PS/2 Keyboard - OSDev Wiki](http://wiki.osdev.org/PS/2_Keyboard)
 0. [百度语音-API参考-简介-百度云](https://cloud.baidu.com/doc/SPEECH/TTS-Online-Python-SDK.html#.E8.AF.B7.E6.B1.82.E8.AF.B4.E6.98.8E)
 0. [必应语音 API-认知服务试用体验 | Microsoft Azure](https://azure.microsoft.com/zh-cn/try/cognitive-services/)
-0. [Overview - Sphinx 1.6.3+ documentation](http://www.sphinx-doc.org/en/stable/)
 0. [speech_recognition: Speech recognition module for Python, supporting several engines and APIs, online and offline.](https://github.com/Uberi/speech_recognition/)
