@@ -252,7 +252,7 @@ def sendWord(ws, t=None):
 #%% 
 if __name__ == '__main__':
     def f():
-        k = 'n4'
+        k = 'w'
         ReleaseKey(k)
         PressKey(k)
         time.sleep(1)
@@ -265,8 +265,11 @@ if __name__ == '__main__':
         rkey(k)
         time.sleep(0.1)
         pkey(k)
+    import yl
+    log = yl.tool.log
+    getName = lambda :log(getWindowName())
     pussWhile(f,2)
-#    f()n4
+#    f()n4w
 #    print 
 
 

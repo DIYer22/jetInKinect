@@ -1,20 +1,20 @@
-# jetInKinect: 基于Kinect 的体感控制鹞式战斗机
+# jetInKinect: 使用Kinect 体感与语音控制鹞式战斗机
 ----
 > Author：`杨磊`
-
-> Class : `CS 1403`
-
-> Number : `2013011013`
 
 > E-mail：`ylxx@live.com`
 
 > Date：`2017-07-16`
 
-> Description：use Kinect to control jet in *GTA: San Andreas* on windows
+> Description：use Kinect  and voice  to control jet in *GTA: San Andreas* on windows
 
-## 视频效果
+## Demo
 
+![](img/demo.gif)
 
+[Video Demo on YouTube](https://youtu.be/FVttYUcRh7w)
+
+[Video Demo on 腾讯视频]()
 
 ## 操作说明
 
@@ -22,7 +22,7 @@
 
 kinect 各节点名称
 
-![](./img/joint.png)
+![](img/joint.png)
 
 此外 还有以下向量
 > * spineVector：脊柱所在向量
@@ -35,53 +35,53 @@ kinect 各节点名称
 
 
 0. 默认状态
-![](img/NULL.png)
+> ![](img/NULL.png)
 > * `动作`：人面向Kinect 竖直战立，手臂的上臂与身体在同一平面， 手臂的前臂正对着Kinect
 > * `原理`：无
 >* `映射按键`：无
 >* `功能`：默认状态 啥也不做
 
 0. 垂直起飞
-![](img/w.png)
+> ![](img/w.png)
 > * `动作`：保持上臂与身体在同一平面， 前臂正对着Kinect，将上臂抬起，使之尽量与肩膀齐平
 > * `原理`：计算shoulderElhowLeft 和 shoulderElhowRight的夹角 大于100°则垂直起
 >* `映射按键`：`W`
 >* `功能`：缓慢垂直向上升空
 
 0. 垂直下降
-![](img/s.png)
+> ![](img/s.png)
 > * `动作`：上半身与默认状态保持一致，脚呈半蹲姿势
 > * `原理`：hipKneeLeft与向量(0,0,-1)的夹角若小于80°则激发
 >* `映射按键`：`S`
 >* `功能`：缓慢垂直降落
 
 0. 左倾斜/右倾斜
-![](img/a.png)
-![](img/d.png)
+> ![](img/a.png)
+> ![](img/d.png)
 > * `动作`：保持左右手肘有较大高度落差
 > * `原理`：elbowVector 和 向量(0,1,0)的角度小于75° or 大于105° 则激发
 >* `映射按键`：`A/D`
 >* `功能`：飞机左倾斜/右倾斜
 
 0. 前倾斜/后倾斜
-![](img/up.png)
-![](img/down.png)
+> ![](img/up.png)
+> ![](img/down.png)
 > * `动作`：保持前臂与水平面有较大角度
 > * `原理`：elbowWrist 和 spineVector的角度小于80° or 大于120° 则激发
 >* `映射按键`：`up array/down array`
 >* `功能`：飞机前倾斜/后倾斜
 
 0. 左旋转/右旋转
-![](img/q.png)
-![](img/e.png)
+> ![](img/q.png)
+> ![](img/e.png)
 > * `动作`：上半身左/右旋转一定角度
 > * `原理`：shoulderVector和 向量(0,0,1)的角度小于75° or 大于105° 则激发
 >* `映射按键`：`Q/E`
 >* `功能`：飞机的方向在水平左旋转/右旋转
 
 0. 加速/减速
-![](img/n8.png)
-![](img/n2.png)
+> ![](img/n8.png)
+> ![](img/n2.png)
 > * `动作`：前臂水平张开45°/前臂水平聚拢45°
 > * `原理`：elbowWrist 和 shoulderVector 的角度小于45° or 大于135° 则激发将左右手所得的角度再进行相减 再进一步判断
 >* `映射按键`：`Num8/Num2`
@@ -142,7 +142,7 @@ def degreeOfVictor(p1,p2):
 
 
 | 方案 | 准确率 | 延迟 | 其他方面  | 评估结果 |
-| --------   | :-----:   | :-----  | :----  |
+| --------   | :-----:   | :-----  | :----  |:----  |
 | 离线方案 | 极低 | 0.5~1.5 s | 由于识别需要占用较多系统资源 会造成游戏卡顿 | 放弃 |
 | 百度云语音 | 一般 | 国内网 1.7~3.0 s |  | 优先考虑 |
 | 微软认知服务 | 较好 | 国内网 5~10 s |  | 可以考虑 |
@@ -179,8 +179,8 @@ def degreeOfVictor(p1,p2):
 }
 ```
  结果如下图
-![](./img/changeKeys.png)
-6. 最后，使用命令 `python myGame.py` 开启Kinect 即可操纵
+![](img/changeKeys.png)
+6. 最后，使用命令 `python jetInKinect.py` 开启Kinect 即可操纵
 
 
 ## 注意事项
@@ -191,6 +191,13 @@ def degreeOfVictor(p1,p2):
 
 0. 由于Kinect传感器为红外视频，所以 建议避免穿黑色衣服（黑色衣服会吸收红外线 增加传感器误差）
 
+
+### 可改进事项
+
+0. 由于程序是通过键盘映射来操作的 键盘为点按的布尔操作 ，实际上 体感更适合于类似手柄摇杆的标量操作 这将会大大提升操控体验
+
+0. 语音识别可改为本地的预训练好的神经网络来识别
+
 ## 项目总结
 　　生产实习开始时，由于微软几乎没有为`Pykinect`写文档 也缺乏参考代码，我还在考虑是使用`C#`还是`Python`来开发，最后 还是因为`numpy`和`iPython`的便利性 硬着头皮学`Pykinect`，由于微软只发布了一个pykinect的demo，所以熟悉API花费了一周多的时间
 
@@ -200,11 +207,6 @@ def degreeOfVictor(p1,p2):
 
 总之 此次Kinect开发 即有趣又有收获
 
-### 可改进事项
-
-0. 由于程序是通过键盘映射来操作的 键盘为点按的布尔操作 ，实际上 体感更适合于类似手柄摇杆的标量操作 这将会大大提升操控体验
-
-0. 语音识别可改为本地的预训练好的神经网络来识别
 
 ## 参考
 0. [PyKinect - write Kinect games using Python!](https://github.com/Microsoft/PTVS/wiki/PyKinect)
